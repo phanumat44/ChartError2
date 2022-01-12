@@ -180,6 +180,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NatureController.cs" />
+    <Compile Include="Controllers\OrderDetailsController.cs" />
     <Compile Include="Controllers\ScienceController.cs" />
     <Compile Include="Controllers\TechController.cs" />
     <Compile Include="Global.asax.cs">
@@ -218,10 +219,14 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderDetailsViewModel.cs" />
     <Compile Include="OrderPic.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\OrderPicsController.cs" />
+    <Compile Include="order_details.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Picture.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -290,6 +295,7 @@
     <Content Include="Content\images\pd8.jpg" />
     <Content Include="Content\images\pd9.png" />
     <Content Include="Content\images\ptop.png" />
+    <Content Include="Content\images\QR.png" />
     <Content Include="Content\images\regis.png" />
     <Content Include="Content\images\s.jpg" />
     <Content Include="Content\images\sci1.jpg" />
@@ -411,15 +417,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutAll.cshtml" />
-    <Content Include="Views\Art\art.cshtml" />
     <Content Include="Views\Account\LoginT.cshtml" />
     <Content Include="Views\Account\RegisterT.cshtml" />
     <Content Include="Views\Account\ForgotPasswordT.cshtml" />
-    <Content Include="Views\Animal\animal.cshtml" />
-    <Content Include="Views\Nature\nature.cshtml" />
-    <Content Include="Views\Science\sci.cshtml" />
-    <Content Include="Views\Tech\tech.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Pictures\Create.cshtml" />
     <Content Include="Views\Pictures\Delete.cshtml" />
     <Content Include="Views\Pictures\Details.cshtml" />
@@ -439,9 +439,13 @@
     <Content Include="Views\Category\Animal.cshtml" />
     <Content Include="Views\Category\Science.cshtml" />
     <Content Include="Views\Category\Tech.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\OrderDetails\ViewOrderDetails.cshtml" />
+    <Content Include="Views\Home\QRCODE.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="orderDetails\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

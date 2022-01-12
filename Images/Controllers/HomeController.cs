@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-
 namespace Images.Controllers
 {
     public class HomeController : Controller
@@ -67,9 +68,7 @@ namespace Images.Controllers
             }
             return View(picture);
         }
-
-
-        public ActionResult AddOrder(int? id, int? total)
+        public ActionResult QRCODE(int? id)
         {
             if (id == null)
             {
@@ -80,17 +79,36 @@ namespace Images.Controllers
             {
                 return HttpNotFound();
             }
+            return View(picture);
+        }
+
+
+        public ActionResult AddOrder(int? idx, decimal? total)
+        {
+            if (idx == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Picture picture = db.Pictures.Find(idx);
+            if (picture == null)
+            {
+                return HttpNotFound();
+            }
 
             OrderPic order = new OrderPic();
             order.User_email = User.Identity.Name;
-            order.Pic_ID = id;
+            order.Pic_ID = idx;
             order.total = total;
             db.OrderPics.Add(order);
             db.SaveChanges();
 
-            
+
             return RedirectToAction("Index");
             //return View(picture);
         }
+
+
+
+
     }
 }

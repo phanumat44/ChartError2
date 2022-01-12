@@ -24,6 +24,16 @@
           <Property Name="BankName" Type="nvarchar" MaxLength="50" />
           <Property Name="BankID" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="order_details">
+          <Key>
+            <PropertyRef Name="order_details_id" />
+          </Key>
+          <Property Name="order_details_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Order_Pic" Type="int" />
+          <Property Name="Pic_ID" Type="int" />
+          <Property Name="amount" Type="int" />
+          <Property Name="sub_total" Type="money" />
+        </EntityType>
         <EntityType Name="OrderPic">
           <Key>
             <PropertyRef Name="Order_Pic" />
@@ -32,6 +42,7 @@
           <Property Name="User_email" Type="nvarchar" MaxLength="250" />
           <Property Name="Pic_ID" Type="int" />
           <Property Name="total" Type="money" />
+          <Property Name="ordertime" Type="timestamp" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Picture">
           <Key>
@@ -46,10 +57,43 @@
           <Property Name="url" Type="varchar" MaxLength="50" />
           <Property Name="user_email" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <Association Name="FK_order_details_ToTable">
+          <End Role="OrderPic" Type="Self.OrderPic" Multiplicity="0..1" />
+          <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderPic">
+              <PropertyRef Name="Order_Pic" />
+            </Principal>
+            <Dependent Role="order_details">
+              <PropertyRef Name="Order_Pic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_details_ToTable_1">
+          <End Role="Picture" Type="Self.Picture" Multiplicity="0..1" />
+          <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Picture">
+              <PropertyRef Name="Pic_ID" />
+            </Principal>
+            <Dependent Role="order_details">
+              <PropertyRef Name="Pic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_details" EntityType="Self.order_details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderPic" EntityType="Self.OrderPic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_order_details_ToTable" Association="Self.FK_order_details_ToTable">
+            <End Role="OrderPic" EntitySet="OrderPic" />
+            <End Role="order_details" EntitySet="order_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_details_ToTable_1" Association="Self.FK_order_details_ToTable_1">
+            <End Role="Picture" EntitySet="Picture" />
+            <End Role="order_details" EntitySet="order_details" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -82,6 +126,8 @@
           <Property Name="User_email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Pic_ID" Type="Int32" />
           <Property Name="total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ordertime" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="order_details" Relationship="Model.FK_order_details_ToTable" FromRole="OrderPic" ToRole="order_details" />
         </EntityType>
         <EntityType Name="Picture">
           <Key>
@@ -95,13 +141,59 @@
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="user_email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="order_details" Relationship="Model.FK_order_details_ToTable_1" FromRole="Picture" ToRole="order_details" />
         </EntityType>
         <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="OrderPics" EntityType="Self.OrderPic" />
           <EntitySet Name="Pictures" EntityType="Self.Picture" />
-        </EntityContainer>
-      </Schema>
+          <EntitySet Name="order_details" EntityType="Model.order_details" />
+          <AssociationSet Name="FK_order_details_ToTable" Association="Model.FK_order_details_ToTable">
+            <End Role="OrderPic" EntitySet="OrderPics" />
+            <End Role="order_details" EntitySet="order_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_details_ToTable_1" Association="Model.FK_order_details_ToTable_1">
+            <End Role="Picture" EntitySet="Pictures" />
+            <End Role="order_details" EntitySet="order_details" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="order_details">
+          <Key>
+            <PropertyRef Name="order_details_id" />
+          </Key>
+          <Property Name="order_details_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order_Pic" Type="Int32" />
+          <Property Name="Pic_ID" Type="Int32" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="sub_total" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="OrderPic" Relationship="Model.FK_order_details_ToTable" FromRole="order_details" ToRole="OrderPic" />
+          <NavigationProperty Name="Picture" Relationship="Model.FK_order_details_ToTable_1" FromRole="order_details" ToRole="Picture" />
+        </EntityType>
+        <Association Name="FK_order_details_ToTable">
+          <End Type="Model.OrderPic" Role="OrderPic" Multiplicity="0..1" />
+          <End Type="Model.order_details" Role="order_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderPic">
+              <PropertyRef Name="Order_Pic" />
+            </Principal>
+            <Dependent Role="order_details">
+              <PropertyRef Name="Order_Pic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_details_ToTable_1">
+          <End Type="Model.Picture" Role="Picture" Multiplicity="0..1" />
+          <End Type="Model.order_details" Role="order_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Picture">
+              <PropertyRef Name="Pic_ID" />
+            </Principal>
+            <Dependent Role="order_details">
+              <PropertyRef Name="Pic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -130,6 +222,7 @@
           <EntitySetMapping Name="OrderPics">
             <EntityTypeMapping TypeName="Model.OrderPic">
               <MappingFragment StoreEntitySet="OrderPic">
+                <ScalarProperty Name="ordertime" ColumnName="ordertime" />
                 <ScalarProperty Name="Order_Pic" ColumnName="Order_Pic" />
                 <ScalarProperty Name="User_email" ColumnName="User_email" />
                 <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
@@ -148,6 +241,17 @@
                 <ScalarProperty Name="Desc" ColumnName="Desc" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="url" ColumnName="url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_details">
+            <EntityTypeMapping TypeName="Model.order_details">
+              <MappingFragment StoreEntitySet="order_details">
+                <ScalarProperty Name="sub_total" ColumnName="sub_total" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+                <ScalarProperty Name="Order_Pic" ColumnName="Order_Pic" />
+                <ScalarProperty Name="order_details_id" ColumnName="order_details_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

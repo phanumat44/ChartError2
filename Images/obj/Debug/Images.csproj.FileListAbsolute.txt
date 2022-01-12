@@ -507,3 +507,4 @@ C:\Users\Admin\Desktop\Project101\Images\obj\Debug\Images.csproj.CoreCompileInpu
 C:\Users\Admin\Desktop\Project101\Images\obj\Debug\Images.csproj.CopyComplete
 C:\Users\Admin\Desktop\Project101\Images\obj\Debug\Images.dll
 C:\Users\Admin\Desktop\Project101\Images\obj\Debug\Images.pdb
+C:\Users\Admin\Desktop\Project101\Images\obj\Debug\Images.csproj.AssemblyReference.cache

@@ -28,5 +28,6 @@ namespace Images
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<OrderPic> OrderPics { get; set; }
         public virtual DbSet<Picture> Pictures { get; set; }
+        public virtual DbSet<order_details> order_details { get; set; }
     }
 }

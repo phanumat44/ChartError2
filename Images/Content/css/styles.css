@@ -2757,6 +2757,35 @@ textarea.form-control-lg {
     margin-left:25%;
     width: 50%;
 }
+.input-group1 {
+    position: static;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-left: 32%;
+    margin-top:35%;
+    width: 50%;
+}
+.input-group2 {
+    position: static;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-left: 29%;
+    width: 50%;
+}
+.input-group3 {
+    position: static;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin-left: 35%;
+
+    width: 50%;
+}
 .input-group > .form-control,
 .input-group > .form-select {
   position: relative;

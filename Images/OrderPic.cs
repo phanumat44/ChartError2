@@ -14,9 +14,19 @@ namespace Images
     
     public partial class OrderPic
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public OrderPic()
+        {
+            this.order_details = new HashSet<order_details>();
+        }
+    
         public int Order_Pic { get; set; }
         public string User_email { get; set; }
         public Nullable<int> Pic_ID { get; set; }
         public Nullable<decimal> total { get; set; }
+        public byte[] ordertime { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order_details> order_details { get; set; }
     }
 }

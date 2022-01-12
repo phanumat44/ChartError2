@@ -69,9 +69,8 @@
 
             </div>
             <br />
-            @Html.HiddenFor(model => model.Pic_ID)
-            @Html.HiddenFor(model => model.Price)
-            @Html.ActionLink("Order", "AddOrder", new { id = Model.Pic_ID, total = Model.Price })
+            
+            @Html.ActionLink("Select", "QRCODE","Home", new { id = Model.Pic_ID},new { @class = "btn btn-info" })
         </div>
     </main>
 

@@ -24,6 +24,7 @@
     <EntitySetMapping Name="OrderPics">
       <EntityTypeMapping TypeName="Model.OrderPic">
         <MappingFragment StoreEntitySet="OrderPic">
+          <ScalarProperty Name="ordertime" ColumnName="ordertime" />
           <ScalarProperty Name="Order_Pic" ColumnName="Order_Pic" />
           <ScalarProperty Name="User_email" ColumnName="User_email" />
           <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
@@ -42,6 +43,17 @@
           <ScalarProperty Name="Desc" ColumnName="Desc" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="url" ColumnName="url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_details">
+      <EntityTypeMapping TypeName="Model.order_details">
+        <MappingFragment StoreEntitySet="order_details">
+          <ScalarProperty Name="sub_total" ColumnName="sub_total" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
+          <ScalarProperty Name="Order_Pic" ColumnName="Order_Pic" />
+          <ScalarProperty Name="order_details_id" ColumnName="order_details_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,0 +1,34 @@
+﻿@model Images.Picture
+
+@{
+    ViewBag.Title = "QRCODE";
+    Layout = "~/Views/Shared/_LayoutAll.cshtml";
+}
+
+<main class="container">
+    </br>
+    </br>
+    <div >
+
+        <h4 class="input-group3">โปรดแสกน QR Code เพื่อชำระเงิน</h4>
+        <hr />
+
+        <dl class="input-group2">
+            <dd>
+                <img src=@Url.Content("~/Content/images/QR.png") style="width: 500px; height: 500px;" />
+            </dd>
+        </dl>
+        <dl class="input-group1">
+            <dd><h5>
+    โปรดกด "ยืนยัน" เมื่อแสกน QR Code เเล้ว
+    @Html.HiddenFor(model => model.Pic_ID)
+    @Html.ActionLink("ยืนยัน", "AddOrder", new { idx = Model.Pic_ID, total = Model.Price }, new { @class = "btn btn-success" })
+
+</h5>
+            </dd>
+        </dl>
+            
+            
+    </div>
+
+</main>

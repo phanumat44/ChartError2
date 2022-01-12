@@ -27,6 +27,8 @@
     <Property Name="User_email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="Pic_ID" Type="Int32" />
     <Property Name="total" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ordertime" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="order_details" Relationship="Model.FK_order_details_ToTable" FromRole="OrderPic" ToRole="order_details" />
   </EntityType>
   <EntityType Name="Picture">
     <Key>
@@ -40,10 +42,56 @@
     <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="user_email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="order_details" Relationship="Model.FK_order_details_ToTable_1" FromRole="Picture" ToRole="order_details" />
   </EntityType>
   <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
     <EntitySet Name="OrderPics" EntityType="Self.OrderPic" />
     <EntitySet Name="Pictures" EntityType="Self.Picture" />
+    <EntitySet Name="order_details" EntityType="Model.order_details" />
+    <AssociationSet Name="FK_order_details_ToTable" Association="Model.FK_order_details_ToTable">
+      <End Role="OrderPic" EntitySet="OrderPics" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_details_ToTable_1" Association="Model.FK_order_details_ToTable_1">
+      <End Role="Picture" EntitySet="Pictures" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="order_details">
+    <Key>
+      <PropertyRef Name="order_details_id" />
+    </Key>
+    <Property Name="order_details_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Order_Pic" Type="Int32" />
+    <Property Name="Pic_ID" Type="Int32" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="sub_total" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="OrderPic" Relationship="Model.FK_order_details_ToTable" FromRole="order_details" ToRole="OrderPic" />
+    <NavigationProperty Name="Picture" Relationship="Model.FK_order_details_ToTable_1" FromRole="order_details" ToRole="Picture" />
+  </EntityType>
+  <Association Name="FK_order_details_ToTable">
+    <End Type="Model.OrderPic" Role="OrderPic" Multiplicity="0..1" />
+    <End Type="Model.order_details" Role="order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderPic">
+        <PropertyRef Name="Order_Pic" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="Order_Pic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_details_ToTable_1">
+    <End Type="Model.Picture" Role="Picture" Multiplicity="0..1" />
+    <End Type="Model.order_details" Role="order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="Pic_ID" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="Pic_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
