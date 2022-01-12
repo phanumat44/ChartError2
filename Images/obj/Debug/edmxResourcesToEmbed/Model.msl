@@ -57,5 +57,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="UserCollections">
+      <EntityTypeMapping TypeName="Model.UserCollection">
+        <MappingFragment StoreEntitySet="UserCollection">
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="Id_userimage" ColumnName="Id_userimage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
