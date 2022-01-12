@@ -57,6 +57,7 @@
       <End Role="Picture" EntitySet="Pictures" />
       <End Role="order_details" EntitySet="order_details" />
     </AssociationSet>
+    <EntitySet Name="UserCollections" EntityType="Model.UserCollection" />
   </EntityContainer>
   <EntityType Name="order_details">
     <Key>
@@ -94,4 +95,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="UserCollection">
+    <Key>
+      <PropertyRef Name="Id_userimage" />
+    </Key>
+    <Property Name="Id_userimage" Type="Int32" Nullable="false" />
+    <Property Name="user_email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Desc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>
