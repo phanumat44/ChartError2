@@ -175,6 +175,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -216,7 +217,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrderDetailsViewModel.cs" />
-    <Compile Include="OrderDetailsDataModel.cs" />
+    <Compile Include="Models\OrderDetailsDataModel.cs" />
     <Compile Include="OrderPic.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -448,6 +449,7 @@
     <Content Include="Views\UserCollections\Details.cshtml" />
     <Content Include="Views\UserCollections\Edit.cshtml" />
     <Content Include="Views\UserCollections\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
