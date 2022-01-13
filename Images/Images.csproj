@@ -173,17 +173,12 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AnimalController.cs" />
-    <Compile Include="Controllers\ArtController.cs" />
+    <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\NatureController.cs" />
     <Compile Include="Controllers\OrderDetailsController.cs" />
-    <Compile Include="Controllers\ScienceController.cs" />
-    <Compile Include="Controllers\TechController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,6 +216,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrderDetailsViewModel.cs" />
+    <Compile Include="OrderDetailsDataModel.cs" />
     <Compile Include="OrderPic.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -237,6 +233,7 @@
     <Compile Include="UserCollection.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\UserCollectionsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -446,11 +443,15 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\OrderDetails\ViewOrderDetails.cshtml" />
     <Content Include="Views\Home\QRCODE.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\UserCollections\Create.cshtml" />
+    <Content Include="Views\UserCollections\Delete.cshtml" />
+    <Content Include="Views\UserCollections\Details.cshtml" />
+    <Content Include="Views\UserCollections\Edit.cshtml" />
+    <Content Include="Views\UserCollections\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="orderDetails\" />
+    <Folder Include="Views\API\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

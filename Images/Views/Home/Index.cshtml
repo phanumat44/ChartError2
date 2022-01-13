@@ -5,17 +5,7 @@
 }
 
 @model IEnumerable<Images.Picture>
-@*@{
-        var product1 = new SessionShop.Models.Mobiles { Id = 1, MobileName = "Green", Price = 25000 };
-        var product2 = new SessionShop.Models.Mobiles { Id = 2, MobileName = "Purple", Price = 30000 };
-        var product3 = new SessionShop.Models.Mobiles { Id = 3, MobileName = "White", Price = 21000 };
-        var product4 = new SessionShop.Models.Mobiles { Id = 4, MobileName = "Blue", Price = 31000 };
-        var product5 = new SessionShop.Models.Mobiles { Id = 5, MobileName = "Red", Price = 19000 };
-        var product6 = new SessionShop.Models.Mobiles { Id = 6, MobileName = "Black", Price = 33000 };
-        var product7 = new SessionShop.Models.Mobiles { Id = 7, MobileName = "Gold", Price = 18000 };
-        var product8 = new SessionShop.Models.Mobiles { Id = 8, MobileName = "Blacks", Price = 28000 };
-    }*@
-<!-- Header-->
+
 <!-- Header   Searching-->
 <header>
 
@@ -36,13 +26,6 @@
                     <button type="submit" class="btn btn btn-dark">ค้นหา</button>
                 </div>
             }
-            @*<div class="input-group">
-
-                    <input type="search" value="Search" class="form-control rounded" placeholder="ค้นหาภาพถ่ายตามความต้องการของคุณ" aria-label="Search"
-                           aria-describedby="search-addon" />
-
-                    <button type="button" class="btn btn btn-dark">ค้นหา</button>
-                </div>*@
             <h1 class="hero-text">
                 รวมรูปภาพสวยๆพร้อมให้คุณดาวน์โหลด
 
@@ -75,14 +58,6 @@
                             <h5 onclick="location.href = '@Url.Action("Art","Category")'">ศิลปะ</h5>
                         </div>
                     </div>
-                    <!-- Product actions-->
-                    @*<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center">
-                                <a id="btn_add" class="btn btn-outline-dark mt-auto" href="@Url.Action("Add", "AddToCart",product1)">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span>เพิ่มใส่ตะกร้า
-                                </a>
-                            </div>
-                        </div>*@
                 </div>
             </div>
 
@@ -90,7 +65,6 @@
             <div class="col mb-5">
                 <div class="card h-100">
                     <!-- Sale badge-->
-                    <!--<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>-->
                     <!-- Product image-->
                     <img class="card-img-top" src="@Url.Content("~/Content/images/pd5.jpg")" onclick="location.href = '@Url.Action("Nature","Category")'" />
                     <!-- Product details-->
@@ -98,33 +72,12 @@
                         <div class="text-center">
                             <!-- Product name-->
                             <h5 onclick="location.href = '@Url.Action("Nature","Category")'">ธรรมชาติ</h5>
-                            <!-- Product reviews-->
-                            <!--<div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                            </div>-->
-                            <!-- Product price-->
-                            <!--<span class="text-muted text-decoration-line-through">$35,000</span>
-                            30,000-->
                         </div>
                     </div>
-                    <!-- Product actions-->
-                    @*<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center">
-                                <a id="btn_add" class="btn btn-outline-dark mt-auto" href="@Url.Action("Add","AddToCart",product2)">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span>เพิ่มใส่ตะกร้า
-                                </a>
-                            </div>
-                        </div>*@
                 </div>
             </div>
             <div class="col mb-5">
                 <div class="card h-100">
-                    <!-- Sale badge-->
-                    <!--<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>-->
                     <!-- Product image-->
                     <img class="card-img-top" src="@Url.Content("~/Content/images/pd2.jpg")" onclick="location.href = '@Url.Action("Animal","Category")'" />
                     <!-- Product details-->
@@ -132,19 +85,8 @@
                         <div class="text-center">
                             <!-- Product name-->
                             <h5 onclick="location.href = '@Url.Action("Animal","Category")'">สัตว์</h5>
-                            <!-- Product price-->
-                            <!--<span class="text-muted text-decoration-line-through">$28,000</span>
-                            21,000-->
                         </div>
                     </div>
-                    <!-- Product actions-->
-                    @*<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center">
-                                <a id="btn_add" class="btn btn-outline-dark mt-auto" href="@Url.Action("Add","AddToCart",product3)">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span>เพิ่มใส่ตะกร้า
-                                </a>
-                            </div>
-                        </div>*@
                 </div>
             </div>
             <div class="col mb-5">
@@ -157,25 +99,9 @@
                             <!-- Product name-->
                             <h5 onclick="location.href = '@Url.Action("Science","Category")'">วิทยาศาสตร์</h5>
                             <!-- Product reviews-->
-                            <!--<div class="d-flex justify-content-center small text-warning mb-2">
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                                <div class="bi-star-fill"></div>
-                            </div>-->
-                            <!-- Product price-->
-                            <!--31,000-->
+                            
                         </div>
                     </div>
-                    <!-- Product actions-->
-                    @*<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center">
-                                <a id="btn_add" class="btn btn-outline-dark mt-auto" href="@Url.Action("Add","AddToCart",product4)">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span>เพิ่มใส่ตะกร้า
-                                </a>
-                            </div>
-                        </div>*@
                 </div>
             </div>
 
@@ -198,7 +124,7 @@
 </section>
 
 
-<hr class="mb-5" />
+<hr class="mb-2" />
 <!--Grid row-->
 <div class="container my-4">
     <div class="row">
