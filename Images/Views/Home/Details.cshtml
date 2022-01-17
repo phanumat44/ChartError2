@@ -55,10 +55,10 @@
                     <span>หมวดหมู่: @Html.DisplayFor(model => model.Type)</span>
 
                     @* <div class="cable-choose">
-                    <button>Straight</button>
-                    <button>Coiled</button>
-                    <button>Long-coiled</button>
-                </div>*@
+                            <button>Straight</button>
+                            <button>Coiled</button>
+                            <button>Long-coiled</button>
+                        </div>*@
 
                 </div>
             </div>
@@ -69,8 +69,11 @@
 
             </div>
             <br />
-            
-            @Html.ActionLink("BUY", "QRCODE","Home", new { id = Model.Pic_ID},new { @class = "btn btn-info" })
+            @if (User.Identity.Name != "admin@admin.com")
+            {
+                @Html.ActionLink("BUY", "QRCODE", "Home", new { id = Model.Pic_ID }, new { @class = "btn btn-info" })
+            }
+
         </div>
     </main>
 

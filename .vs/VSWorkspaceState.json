@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Images",
+    "\\Images\\Controllers"
   ],
-  "SelectedNode": "\\Images.sln",
+  "SelectedNode": "\\Images\\Controllers\\DashboardController.cs",
   "PreviewInSolutionExplorer": false
 }

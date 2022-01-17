@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Managment";
+    Layout = "~/Views/Shared/_LayoutAll.cshtml";
+}
+<center>
+    <h2>ข้อมูลเชิงสถิติ</h2>
+</center>
+
+
+
+<center>
+
+    <h3>ประเภทภาพที่วางขาย</h3>
+    @*<div id="line_chart"></div>*@
+    <div id="pie_chart"></div>
+    <h3>ประเภทภาพที่ถูกซื้อ</h3>
+    <div id="pie_chart1"></div>
+    </br>
+
+</center>
+</br>
+
+<script type="text/javascript"
+        src="https://www.google.com/jsapi?autoload={
+ 'modules':[{
+ 'name':'visualization',
+ 'version':'1',
+ 'packages':['corechart']
+ }]
+ }">
+
+</script>
+
+<script type="text/javascript">
+    google.load('visualization', '1.1', { packages: ['line'] });
+    google.setOnLoadCallback(drawLineChart);
+    function drawLineChart() {
+        $.get('/API/OrderbyModel', {},
+            function (data) {
+                var tdata = new google.visualization.DataTable();
+                tdata.addColumn('string', 'ประเภท');
+                tdata.addColumn('number', 'จำนวนรูป');
+                for (var i = 0; i < data.length; i++) {
+                    tdata.addRow([data[i].Model, data[i].Amount]);
+                }
+                var options = {
+                    width: 500
+                };
+                var chart = new google.charts.Line(document.getElementById('line_chart'));
+                chart.draw(tdata, options);
+            });
+    }
+</script>
+
+<script type="text/javascript">
+    google.charts.load('current', { packages: ['corechart'] });
+    google.setOnLoadCallback(drawPieChart);
+    function drawPieChart() {
+        $.get('/API/OrderbyModel', {},
+            function (data) {
+                var tdata = new google.visualization.DataTable();
+                tdata.addColumn('string', 'Model');
+                tdata.addColumn('number', 'Amount');
+                for (var i = 0; i < data.length; i++) {
+                    tdata.addRow([data[i].Model, data[i].Amount]);
+                }
+                var options = {
+                    width: 1000,
+                    height: 250,
+                };
+                var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+                chart.draw(tdata, options);
+            });
+    }
+</script>
+
+
+
+<script type="text/javascript">
+    google.charts.load('current', { packages: ['corechart'] });
+    google.setOnLoadCallback(drawPieChart);
+    function drawPieChart() {
+        $.get('/API/OrderbyModelPic', {},
+            function (data) {
+                var tdata = new google.visualization.DataTable();
+                tdata.addColumn('string', 'Model');
+                tdata.addColumn('number', 'Amount');
+                for (var i = 0; i < data.length; i++) {
+                    tdata.addRow([data[i].Model, data[i].Amount]);
+                }
+                var options = {
+                    width: 1000,
+                    height: 250,
+                };
+                var chart = new google.visualization.PieChart(document.getElementById('pie_chart1'));
+                chart.draw(tdata, options);
+            });
+    }
+</script>

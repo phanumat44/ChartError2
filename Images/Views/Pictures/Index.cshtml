@@ -54,14 +54,10 @@
         }
     }
 </div>
-<button class="button" onclick="$('#target').toggle();">Show Chart</button>
 <center>
-    <div id="target" >
-        <h3>Line Chart Order By Model</h3>
-        <div id="line_chart"></div>
+    <div id="target">
         <h3>Pie Chart Order By Model</h3>
         <div id="pie_chart"></div>
-        <div> id="Test_chart"</div>
     </div>
 </center>
 
@@ -74,27 +70,6 @@
  }]
  }">
 
-</script>
-
-<script type="text/javascript">
-    google.load('visualization', '1.1', { packages: ['line'] });
-    google.setOnLoadCallback(drawLineChart);
-    function drawLineChart() {
-        $.get('/API/OrderbyModel', {},
-            function (data) {
-                var tdata = new google.visualization.DataTable();
-                tdata.addColumn('string', 'Model');
-                tdata.addColumn('number', 'Amount');
-                for (var i = 0; i < data.length; i++) {
-                    tdata.addRow([data[i].Model, data[i].Amount]);
-                }
-                var options = {
-                    width: 900
-                };
-                var chart = new google.charts.Line(document.getElementById('line_chart'));
-                chart.draw(tdata, options);
-            });
-    }
 </script>
 
 <script type="text/javascript">
@@ -114,7 +89,7 @@
                     height: 350
                 };
                 var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
- chart.draw(tdata, options);
+                chart.draw(tdata, options);
             });
     }
 </script>
