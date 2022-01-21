@@ -28,7 +28,8 @@ namespace Images.Controllers
                if (!String.IsNullOrEmpty(searchString))
                {
 
-                   pic = pic.Where(p =>  p.Name.ToUpper().Contains(searchString.ToUpper()));
+                   pic = pic.Where(p =>  p.Name.ToUpper().Contains(searchString.ToUpper())
+                                      || p.Type.ToUpper().Contains(searchString.ToUpper()));
                }
 
              /*  switch (sortOrder)
@@ -57,6 +58,7 @@ namespace Images.Controllers
         }
         public ActionResult Details(int? id)
         {
+   
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -67,19 +69,28 @@ namespace Images.Controllers
                 return HttpNotFound();
             }
             return View(picture);
+           
+         
         }
         public ActionResult QRCODE(int? id)
         {
-            if (id == null)
+            if (User.Identity.IsAuthenticated)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Picture picture = db.Pictures.Find(id);
+                if (picture == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(picture);
             }
-            Picture picture = db.Pictures.Find(id);
-            if (picture == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("LoginT", "Account");
             }
-            return View(picture);
         }
 
 

@@ -10,6 +10,7 @@ namespace Images.Models
     public class ApplicationUser : IdentityUser
     {
         
+       /* public string BankName { get; set; }*/
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
