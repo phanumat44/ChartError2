@@ -152,6 +152,7 @@ namespace Images
         public ActionResult DeleteConfirmed(int id)
         {
             Picture picture = db.Pictures.Find(id);
+            //var picture = (from a in db.AspNetUsers where a.Email.Equals(user.Email) select a).FirstOrDefault();
             db.Pictures.Remove(picture);
             db.SaveChanges();
             return RedirectToAction("Index");

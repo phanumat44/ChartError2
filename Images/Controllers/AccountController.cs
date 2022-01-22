@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Images.Models;
+using System.Data.Entity;
 
 namespace Images.Controllers
 {
@@ -164,6 +165,13 @@ namespace Images.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    Entities1 db = new Entities1();
+                   var picture = (from a in db.AspNetUsers where a.Email.Equals(user.Email) select a).FirstOrDefault();
+                    picture.FirstName = model.FirstName;
+                    //db.Pictures.Add(picture);
+                    //db.Entry(picture).State = EntityState.Modified;
+                    db.SaveChanges();
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

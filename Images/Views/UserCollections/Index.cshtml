@@ -26,8 +26,15 @@
                               @Html.ActionLink("Edit", "Edit", new { id = item.Id_userimage }) |
                               @Html.ActionLink("Details", "Details", new { id = item.Id_userimage, @class = "ntn btn-pimary" }) |
                               @Html.ActionLink("Delete", "Delete", new { id = item.Id_userimage })
+                              <button type="button" onclick="load('@Url.Content("~/Content/images/"+(item.url))')">Load</button>
+                              <a href="@Url.Content("~/Content/images/"+(item.url))" download="sss.jpg" >ssss</a>
                           </div>
                       </div>
+                      <script>
+                          function load(url) {
+                              window.open(url);
+                          }
+                      </script>
 
                       @*    @Html.DisplayFor(modelItem => item.user_email)
 

@@ -28,5 +28,7 @@ namespace Images
         public string UserName { get; set; }
         public string BankName { get; set; }
         public string BankID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }
