@@ -286,6 +286,7 @@
     <Content Include="Content\images\ani9.jpg" />
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\images\bg6.jpg" />
+    <Content Include="Content\images\downloading.png" />
     <Content Include="Content\images\f.jpg" />
     <Content Include="Content\images\img.png" />
     <Content Include="Content\images\pd1.jpg" />
