@@ -77,13 +77,13 @@ namespace Images.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Display(Name = "Bank Name")]
+      /*  [Display(Name = "Bank Name")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Bank Name required")]
         public string BankName { get; set; }
 
         [Display(Name = "Bank ID")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Bank ID required")]
-        public string BankID { get; set; }
+        public string BankID { get; set; }*/
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

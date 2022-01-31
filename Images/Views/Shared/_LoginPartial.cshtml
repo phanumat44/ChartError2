@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
+
+
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -11,7 +13,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">บัญชี</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>@Html.ActionLink("โปรไฟล์", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item", style = "text-decoration:none;" })</li>
+                        <li>@Html.ActionLink("โปรไฟล์", "Index", "Profile", routeValues: null, htmlAttributes: new { title = "Profile", @class = "dropdown-item", style = "text-decoration:none;" })</li>
                         <li><hr class="dropdown-divider" /></li>
                         <li>@Html.ActionLink("ขายภาพ", "Index", "Pictures", routeValues: null, htmlAttributes: new { title = "Puctures", @class = "dropdown-item", style = "text-decoration:none;" })</li>
                         <li><hr class="dropdown-divider" /></li>
@@ -34,6 +36,8 @@
             }
 
         </ul>
+
+
     }
 }
 else

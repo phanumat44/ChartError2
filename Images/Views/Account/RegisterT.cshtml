@@ -26,7 +26,7 @@
 </head>
 <body>
     
-        @using (Html.BeginForm("RegisterT", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        @using (Html.BeginForm("RegisterT", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
 
@@ -46,30 +46,32 @@
                                 </div>
                             </div>
                             <div>
-                                @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+                            @*  @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })*@
+                                @Html.Label( "Profile Picture", new { @class = "col-md-2 control-label" })
                                 <div class="icon1">
-                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.LastName, new {@style="padding:10px", @class = "form-control",@type="file" ,@accept=".png,.jpg,.jpeg,.gif,.tif"})
                                 </div>
                             </div>
-                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                           
                             <div>
                                 @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                                 <div class="icon1">
                                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                                 </div>
+                                @Html.ValidationSummary("", new { @class = "text-danger" })
                             </div>
-                            <div>
+                            @*<div>
                                 @Html.LabelFor(m => m.BankName, new { @class = "col-md-2 control-label" })
                                 <div class="icon1">
                                     @Html.TextBoxFor(m => m.BankName, new { @class = "form-control" })
                                 </div>
-                            </div>
-                            <div>
+                            </div>*@
+                           @* <div>
                                 @Html.LabelFor(m => m.BankID, new { @class = "col-md-2 control-label" })
                                 <div class="icon1">
                                     @Html.TextBoxFor(m => m.BankID, new { @class = "form-control" })
                                 </div>
-                            </div>
+                            </div>*@
                             <div>
                                 @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
                                 <div class="icon1">

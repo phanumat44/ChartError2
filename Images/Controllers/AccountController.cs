@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Images.Models;
 using System.Data.Entity;
+using System.IO;
 
 namespace Images.Controllers
 {
@@ -166,8 +167,25 @@ namespace Images.Controllers
                 if (result.Succeeded)
                 {
                     Entities1 db = new Entities1();
-                   var picture = (from a in db.AspNetUsers where a.Email.Equals(user.Email) select a).FirstOrDefault();
-                    picture.FirstName = model.FirstName;
+
+                 
+                    var userdb = (from a in db.AspNetUsers where a.Email.Equals(user.Email) select a).FirstOrDefault();
+
+                    var file = Request.Files[0];
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Content/images/Profile"), fileName);
+                        file.SaveAs(path);
+                        userdb.LastName = fileName;
+                    }
+
+                    userdb.FirstName = model.FirstName;
+                  
+
+
+
                     //db.Pictures.Add(picture);
                     //db.Entry(picture).State = EntityState.Modified;
                     db.SaveChanges();
