@@ -38,9 +38,25 @@ namespace Images.Controllers
         }
 
         // GET: Profile/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Picture picture = db.Pictures.Find(id);
+                if (picture == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(picture);
+            }
+            else
+            {
+                return RedirectToAction("LoginT", "Account");
+            }
         }
 
         // POST: Profile/Create

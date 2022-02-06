@@ -62,6 +62,7 @@
     <EntitySetMapping Name="UserCollections">
       <EntityTypeMapping TypeName="Model.UserCollection">
         <MappingFragment StoreEntitySet="UserCollection">
+          <ScalarProperty Name="picid" ColumnName="picid" />
           <ScalarProperty Name="url" ColumnName="url" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Desc" ColumnName="Desc" />
@@ -70,6 +71,17 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="user_email" ColumnName="user_email" />
           <ScalarProperty Name="Id_userimage" ColumnName="Id_userimage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reports">
+      <EntityTypeMapping TypeName="Model.Report">
+        <MappingFragment StoreEntitySet="Report">
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="pic_url" ColumnName="pic_url" />
+          <ScalarProperty Name="receiver_email" ColumnName="receiver_email" />
+          <ScalarProperty Name="sender_email" ColumnName="sender_email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

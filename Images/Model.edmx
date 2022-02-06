@@ -24,7 +24,7 @@
           <Property Name="BankName" Type="nvarchar" MaxLength="50" />
           <Property Name="BankID" Type="nvarchar" MaxLength="50" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="order_details">
           <Key>
@@ -59,6 +59,16 @@
           <Property Name="url" Type="varchar" MaxLength="50" />
           <Property Name="user_email" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sender_email" Type="nvarchar(max)" />
+          <Property Name="receiver_email" Type="nvarchar(max)" />
+          <Property Name="pic_url" Type="nvarchar(max)" />
+          <Property Name="message" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="UserCollection">
           <Key>
             <PropertyRef Name="Id_userimage" />
@@ -71,6 +81,7 @@
           <Property Name="Desc" Type="nvarchar" MaxLength="200" />
           <Property Name="Price" Type="money" />
           <Property Name="url" Type="varchar" MaxLength="256" />
+          <Property Name="picid" Type="int" />
         </EntityType>
         <Association Name="FK_order_details_ToTable">
           <End Role="OrderPic" Type="Self.OrderPic" Multiplicity="0..1" />
@@ -101,6 +112,7 @@
           <EntitySet Name="order_details" EntityType="Self.order_details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderPic" EntityType="Self.OrderPic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCollection" EntityType="Self.UserCollection" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_order_details_ToTable" Association="Self.FK_order_details_ToTable">
             <End Role="OrderPic" EntitySet="OrderPic" />
@@ -134,7 +146,7 @@
           <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BankID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="OrderPic">
           <Key>
@@ -175,6 +187,7 @@
             <End Role="order_details" EntitySet="order_details" />
           </AssociationSet>
           <EntitySet Name="UserCollections" EntityType="Model.UserCollection" />
+          <EntitySet Name="Reports" EntityType="Model.Report" />
           </EntityContainer>
         <EntityType Name="order_details">
           <Key>
@@ -224,6 +237,17 @@
           <Property Name="Desc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="picid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="sender_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="receiver_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pic_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -292,6 +316,7 @@
           <EntitySetMapping Name="UserCollections">
             <EntityTypeMapping TypeName="Model.UserCollection">
               <MappingFragment StoreEntitySet="UserCollection">
+                <ScalarProperty Name="picid" ColumnName="picid" />
                 <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Desc" ColumnName="Desc" />
@@ -300,6 +325,17 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="user_email" ColumnName="user_email" />
                 <ScalarProperty Name="Id_userimage" ColumnName="Id_userimage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="Model.Report">
+              <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="pic_url" ColumnName="pic_url" />
+                <ScalarProperty Name="receiver_email" ColumnName="receiver_email" />
+                <ScalarProperty Name="sender_email" ColumnName="sender_email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

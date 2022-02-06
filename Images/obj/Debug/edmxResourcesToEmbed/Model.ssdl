@@ -19,7 +19,7 @@
     <Property Name="BankName" Type="nvarchar" MaxLength="50" />
     <Property Name="BankID" Type="nvarchar" MaxLength="50" />
     <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="order_details">
     <Key>
@@ -54,6 +54,16 @@
     <Property Name="url" Type="varchar" MaxLength="50" />
     <Property Name="user_email" Type="nvarchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sender_email" Type="nvarchar(max)" />
+    <Property Name="receiver_email" Type="nvarchar(max)" />
+    <Property Name="pic_url" Type="nvarchar(max)" />
+    <Property Name="message" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="UserCollection">
     <Key>
       <PropertyRef Name="Id_userimage" />
@@ -66,6 +76,7 @@
     <Property Name="Desc" Type="nvarchar" MaxLength="200" />
     <Property Name="Price" Type="money" />
     <Property Name="url" Type="varchar" MaxLength="256" />
+    <Property Name="picid" Type="int" />
   </EntityType>
   <Association Name="FK_order_details_ToTable">
     <End Role="OrderPic" Type="Self.OrderPic" Multiplicity="0..1" />
@@ -96,6 +107,7 @@
     <EntitySet Name="order_details" EntityType="Self.order_details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderPic" EntityType="Self.OrderPic" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserCollection" EntityType="Self.UserCollection" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_order_details_ToTable" Association="Self.FK_order_details_ToTable">
       <End Role="OrderPic" EntitySet="OrderPic" />

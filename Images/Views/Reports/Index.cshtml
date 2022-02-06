@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Images.Report>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAll.cshtml";
+}
+
+<h2 style="margin:15px"> รีพอร์ตจากผู้ซื้อ</h2style="margin:15px">
+
+
+<table class="table">
+    <tr>
+        <th>
+            <h4>ผู้ส่ง</h4>
+        </th>
+      @*  <th>
+            @Html.DisplayNameFor(model => model.receiver_email)
+        </th>*@
+        <th>
+            <h4>รูปภาพ</h4>
+        </th>
+        <th>
+            <h4>ข้อความ</h4>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sender_email)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.receiver_email)
+            </td>*@
+            <td>
+                @*  @Html.DisplayFor(modelItem => item.pic_url)*@
+                <img src=@Url.Content("~/Content/images/"+(item.pic_url)) style="width: 100px;height: auto" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.message)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id, @class = "btn btn-warning" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id, @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

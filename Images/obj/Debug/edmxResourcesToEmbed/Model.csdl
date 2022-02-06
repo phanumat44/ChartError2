@@ -19,7 +19,7 @@
     <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="BankID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="OrderPic">
     <Key>
@@ -60,6 +60,7 @@
       <End Role="order_details" EntitySet="order_details" />
     </AssociationSet>
     <EntitySet Name="UserCollections" EntityType="Model.UserCollection" />
+    <EntitySet Name="Reports" EntityType="Model.Report" />
   </EntityContainer>
   <EntityType Name="order_details">
     <Key>
@@ -109,5 +110,16 @@
     <Property Name="Desc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="picid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="sender_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="receiver_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="pic_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

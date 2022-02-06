@@ -1267,8 +1267,8 @@ C:\Users\asus\Source\Repos\ImagesLast\Images\bin\Microsoft.Owin.Security.Twitter
 C:\Users\asus\Source\Repos\ImagesLast\Images\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\asus\Source\Repos\ImagesLast\Images\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\asus\Source\Repos\ImagesLast\Images\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\asus\Source\Repos\ImagesLast\Images\obj\Debug\Images.csproj.AssemblyReference.cache
 C:\Users\asus\Source\Repos\ImagesLast\Images\obj\Debug\Images.csproj.CoreCompileInputs.cache
 C:\Users\asus\Source\Repos\ImagesLast\Images\obj\Debug\Images.csproj.CopyComplete
 C:\Users\asus\Source\Repos\ImagesLast\Images\obj\Debug\Images.dll
 C:\Users\asus\Source\Repos\ImagesLast\Images\obj\Debug\Images.pdb
+C:\Users\asus\Source\Repos\ImagesLast\Images\obj\Debug\Images.csproj.AssemblyReference.cache

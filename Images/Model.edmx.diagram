@@ -12,6 +12,7 @@
         <AssociationConnector Association="Model.FK_order_details_ToTable" />
         <AssociationConnector Association="Model.FK_order_details_ToTable_1" />
         <EntityTypeShape EntityType="Model.UserCollection" Width="1.5" PointX="6.125" PointY="4.375" />
+        <EntityTypeShape EntityType="Model.Report" Width="1.5" PointX="8.25" PointY="2.25" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
