@@ -21,11 +21,11 @@ namespace Images
 
         private Entities1 db = new Entities1();
 
-        public List<ChartModel> GetOrderbyModel()
+        public List<ChartModel> GetOrderbyModel(string email)
         {
             var chartDataList = new List<ChartModel>();
 
-            var prod = db.Pictures.OrderBy(i => i.Pic_ID).ToList();
+            var prod = db.Pictures.Where(u => u.user_email==email).OrderBy(i => i.Pic_ID).ToList();
             foreach (var item in prod.GroupBy(i => i.Type))
             {
                 var chartData = new ChartModel();

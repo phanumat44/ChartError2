@@ -5,16 +5,17 @@
     Layout = "~/Views/Shared/_LayoutAll.cshtml";
 }
 <br />
-<div class="container">
+@*<div class="container">
     <div class="row">
         <div class="col text-right">
             @Html.ActionLink("เพิ่มสินค้า", "Create", null, new { @class = "btn btn-success" })
         </div>
     </div>
-</div>
+</div>*@
 <center>
     @Html.ActionLink("รีพอร์ทของฉัน", "MyReport", "Reports", new { }, new { @class = "btn btn-info btn-lg" })
-    @Html.ActionLink("รีพอร์ทจากผู้ซื้อ", "Index", "Reports", new { }, new { @class = "btn btn-warning btn-lg" })
+    @Html.ActionLink("รีพอร์ทภาพของฉัน", "Index", "Reports", new { }, new { @class = "btn btn-warning btn-lg" })
+    @Html.ActionLink("เพิ่มสินค้า", "Create", null, new { @class = "btn btn-success" })
 </center>
 
 
@@ -25,6 +26,7 @@
         var indexItem = i - 1;
         if (i == 1 || i % 4 == 1)
         {
+            var username = Model.ElementAt(indexItem).user_email;
             @:<div class="row">
             }
             <div class="col-md-3">
@@ -81,7 +83,7 @@
     google.charts.load('current', { packages: ['corechart'] });
     google.setOnLoadCallback(drawPieChart);
     function drawPieChart() {
-        $.get('/API/OrderbyModel', {},
+        $.get('/API/OrderbyModel?email=@Model.ElementAt(0).user_email' , {},
             function (data) {
                 var tdata = new google.visualization.DataTable();
                 tdata.addColumn('string', 'Model');

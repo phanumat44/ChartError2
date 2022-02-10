@@ -9,10 +9,10 @@ namespace Images.Controllers
     public class APIController : Controller
     {
         // GET: API
-        public JsonResult OrderbyModel()
+        public JsonResult OrderbyModel(string email)
         {
             var orderModel = new OrderDetailsDataModel();
-            var data = orderModel.GetOrderbyModel();
+            var data = orderModel.GetOrderbyModel(email);
             return Json(data, JsonRequestBehavior.AllowGet);
         }
         public JsonResult OrderbyModelPic()

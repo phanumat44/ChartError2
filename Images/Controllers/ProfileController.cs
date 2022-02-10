@@ -94,7 +94,7 @@ namespace Images.Controllers
         // POST: Profile/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,BankName,BankID,FirstName,LastName")] AspNetUser aspNetUser)
         {
@@ -104,6 +104,25 @@ namespace Images.Controllers
                 //db.Pictures.Add(picture);
                 //db.Entry(picture).State = EntityState.Modified;
                 db.Entry(aspNetUser).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(aspNetUser);
+        }*/
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Email,FirstName,LastName")] AspNetUser aspNetUser)
+        {
+            if (ModelState.IsValid)
+            {
+
+                //db.Pictures.Add(picture);
+                //db.Entry(picture).State = EntityState.Modified;
+                //db.Entry(aspNetUser).State = EntityState.Modified;
+                var res = db.AspNetUsers.Find(aspNetUser.Id);
+                res.FirstName = aspNetUser.FirstName;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
