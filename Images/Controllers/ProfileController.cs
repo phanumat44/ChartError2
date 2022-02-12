@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -118,10 +119,19 @@ namespace Images.Controllers
             if (ModelState.IsValid)
             {
 
+                var file = Request.Files[0];
+                var res = db.AspNetUsers.Find(aspNetUser.Id);
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/images/Profile"), fileName);
+                    file.SaveAs(path);
+                    res.LastName = fileName;
+                }
                 //db.Pictures.Add(picture);
                 //db.Entry(picture).State = EntityState.Modified;
                 //db.Entry(aspNetUser).State = EntityState.Modified;
-                var res = db.AspNetUsers.Find(aspNetUser.Id);
+
                 res.FirstName = aspNetUser.FirstName;
                 db.SaveChanges();
                 return RedirectToAction("Index");

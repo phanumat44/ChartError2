@@ -17,8 +17,11 @@ namespace Images
         // GET: Pictures
         public ActionResult Index()
         {
+            var bag = db.Pictures.ToList().ToString();
+            ViewBag.bag = bag;
             return View(db.Pictures.ToList().Where(picture => picture.user_email == User.Identity.Name));
             //return View(db.Pictures.ToList());
+
         }
 
         public ActionResult Order()

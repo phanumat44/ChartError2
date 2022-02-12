@@ -78,11 +78,15 @@
  }">
 
 </script>
+<h1> ภาพทั้งหมด:  @Model.ToList().Count()</h1>
 
+@if(Model.ToList().Count() > 0) {
 <script type="text/javascript">
     google.charts.load('current', { packages: ['corechart'] });
-    google.setOnLoadCallback(drawPieChart);
-    function drawPieChart() {
+
+  
+   google.setOnLoadCallback(drawPieChart);
+   function drawPieChart() {
         $.get('/API/OrderbyModel?email=@Model.ElementAt(0).user_email' , {},
             function (data) {
                 var tdata = new google.visualization.DataTable();
@@ -100,3 +104,4 @@
             });
     }
 </script>
+}

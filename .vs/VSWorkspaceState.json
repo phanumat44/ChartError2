@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Images",
-    "\\Images\\Controllers",
-    "\\Images\\Views",
-    "\\Images\\Views\\Home"
+    ""
   ],
-  "SelectedNode": "\\Images\\Views\\Home\\Details.cshtml",
+  "SelectedNode": "\\Images.sln",
   "PreviewInSolutionExplorer": false
 }
