@@ -16,6 +16,11 @@ namespace Images
         public string Model { get; set; }
         public int Amount { get; set; }
     }
+    public class ChartModelType
+    {
+        public string Model { get; set; }
+        public int Amount { get; set; }
+    }
     public class OrderDetailsDataModel
     {
 
@@ -25,7 +30,7 @@ namespace Images
         {
             var chartDataList = new List<ChartModel>();
 
-            var prod = db.Pictures.Where(u => u.user_email==email).OrderBy(i => i.Pic_ID).ToList();
+            var prod = db.Pictures.Where(u => u.user_email == email).OrderBy(i => i.Pic_ID).ToList();
             foreach (var item in prod.GroupBy(i => i.Type))
             {
                 var chartData = new ChartModel();
@@ -43,6 +48,20 @@ namespace Images
             foreach (var item in prod.GroupBy(i => i.Type))
             {
                 var chartData = new ChartModelPic();
+                chartData.Model = item.FirstOrDefault().Type;
+                chartData.Amount = item.Count();
+                chartDataList.Add(chartData);
+            }
+            return chartDataList;
+        }
+        public List<ChartModelType> GetOrderbyModelType()
+        {
+            var chartDataList = new List<ChartModelType>();
+
+            var prod = db.Pictures.OrderBy(i => i.Pic_ID).ToList();
+            foreach (var item in prod.GroupBy(i => i.Type))
+            {
+                var chartData = new ChartModelType();
                 chartData.Model = item.FirstOrDefault().Type;
                 chartData.Amount = item.Count();
                 chartDataList.Add(chartData);

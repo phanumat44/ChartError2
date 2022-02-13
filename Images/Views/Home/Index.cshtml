@@ -6,6 +6,10 @@
 
 @model IEnumerable<Images.Picture>
 
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+</head>
+
 <!-- Header   Searching-->
 <header>
 
@@ -99,7 +103,7 @@
                             <!-- Product name-->
                             <h5 onclick="location.href = '@Url.Action("Science","Category")'">วิทยาศาสตร์</h5>
                             <!-- Product reviews-->
-                            
+
                         </div>
                     </div>
                 </div>
@@ -125,11 +129,9 @@
 
 
 <hr class="mb-2" />
-<!--Grid row-->
-<div class="container my-4">
-    <div class="row">
 
-
+<div class="container">
+    <div class="row clearfix">
         @for (var i = 1; i <= Model.ToList().Count(); i++)
         {
             var indexItem = i - 1;
@@ -137,18 +139,21 @@
             {
                 @:
             }
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-4 mb-2">
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card product_item">
+                    <div class="body">
+                        <div class="cp_img">
+                            <img src="@Url.Content("~/Content/images/" + (Model.ElementAt(indexItem).url))" alt="Product" class="img-fluid"
+                                 onclick="location.href = '@Url.Action("Details","Home", new {id = @Model.ElementAt(indexItem).Pic_ID })'">
+                        </div>
 
-                <a style="cursor: pointer;" onclick="location.href = '@Url.Action("Details","Home", new {id = @Model.ElementAt(indexItem).Pic_ID })'">
+                        <div class="product_details">
+                            <h4><a onclick="location.href = '@Url.Action("Details","Home", new {id = @Model.ElementAt(indexItem).Pic_ID })'">@Model.ElementAt(indexItem).Name</a></h4>
+                        </div>
 
-                    <img style="min-width:300px;max-height:500px;width:auto;min-height:250px" src="@Url.Content("~/Content/images/" + (Model.ElementAt(indexItem).url))" class="img-fluid mb-4" alt=""
-                         data-wow-delay="0.3s">
-                </a>
+                    </div>
+                </div>
             </div>
-            <!--Grid column-->
-            <!--Grid column-->
-
             if (i % 4 == 0)
             {
                 @:
