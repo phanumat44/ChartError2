@@ -37,6 +37,8 @@
     <EntitySetMapping Name="Pictures">
       <EntityTypeMapping TypeName="Model.Picture">
         <MappingFragment StoreEntitySet="Picture">
+          <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+          <ScalarProperty Name="UserNamePic" ColumnName="UserNamePic" />
           <ScalarProperty Name="user_email" ColumnName="user_email" />
           <ScalarProperty Name="Pic_ID" ColumnName="Pic_ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -62,6 +64,7 @@
     <EntitySetMapping Name="UserCollections">
       <EntityTypeMapping TypeName="Model.UserCollection">
         <MappingFragment StoreEntitySet="UserCollection">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="picid" ColumnName="picid" />
           <ScalarProperty Name="url" ColumnName="url" />
           <ScalarProperty Name="Price" ColumnName="Price" />

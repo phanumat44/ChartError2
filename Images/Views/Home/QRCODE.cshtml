@@ -22,7 +22,7 @@
             <dd><h5>
     โปรดกด "ยืนยัน" เมื่อแสกน QR Code เเล้ว
     @Html.HiddenFor(model => model.Pic_ID)
-   @Html.ActionLink("ยืนยัน", "AddToMyLib","UserCollections", new { idx = Model.Pic_ID, price = Model.Price, url = Model.url, type = Model.Type, name = Model.Name,size = Model.Size,desc = Model.Desc}, new { @class = "btn btn-success" })
+   @Html.ActionLink("ยืนยัน", "AddToMyLib","UserCollections", new { idx = Model.Pic_ID, price = Model.Price, url = Model.url, type = Model.Type, name = Model.Name,size = Model.Size,desc = Model.Desc , email=Model.user_email}, new { @class = "btn btn-success" })
 
 </h5>
             </dd>

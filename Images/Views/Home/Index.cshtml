@@ -144,11 +144,11 @@
                     <div class="body">
                         <div class="cp_img">
                             <img src="@Url.Content("~/Content/images/" + (Model.ElementAt(indexItem).url))" alt="Product" class="img-fluid"
-                                 onclick="location.href = '@Url.Action("Details","Home", new {id = @Model.ElementAt(indexItem).Pic_ID })'">
+                                 onclick="location.href = '@Url.Action("Details","Home", new {id = @Model.ElementAt(indexItem).Pic_ID,email = @Model.ElementAt(indexItem).user_email })'">
                         </div>
 
                         <div class="product_details">
-                            <h4><a onclick="location.href = '@Url.Action("Details","Home", new {id = @Model.ElementAt(indexItem).Pic_ID })'">@Model.ElementAt(indexItem).Name</a></h4>
+                            <h4><a onclick="location.href = '@Url.Action("Details","Home", new {id = @Model.ElementAt(indexItem).Pic_ID,email = @Model.ElementAt(indexItem).user_email })'">@Model.ElementAt(indexItem).Name</a></h4>
                         </div>
 
                     </div>

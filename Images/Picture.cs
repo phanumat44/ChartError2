@@ -28,6 +28,8 @@ namespace Images
         public Nullable<decimal> Price { get; set; }
         public string url { get; set; }
         public string user_email { get; set; }
+        public string UserNamePic { get; set; }
+        public string ProfilePic { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_details> order_details { get; set; }

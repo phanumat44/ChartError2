@@ -45,6 +45,8 @@
     <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="user_email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="order_details" Relationship="Model.FK_order_details_ToTable_1" FromRole="Picture" ToRole="order_details" />
+    <Property Name="UserNamePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
@@ -111,6 +113,7 @@
     <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="url" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="picid" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Report">
     <Key>

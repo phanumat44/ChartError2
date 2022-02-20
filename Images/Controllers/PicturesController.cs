@@ -71,6 +71,16 @@ namespace Images
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Pic_ID,Name,Size,Type,Desc,Price,url")] Picture picture)
         {
+
+
+            var username = (from x in db.AspNetUsers where x.Email == User.Identity.Name.ToString() select x).FirstOrDefault();
+
+            string unam = username.FirstName.ToString();
+            string pf = username.LastName.ToString();
+
+           
+
+
             if (ModelState.IsValid)
             {
                 var file = Request.Files[0];
@@ -82,6 +92,8 @@ namespace Images
                     file.SaveAs(path);
                     picture.url = fileName;
                 }
+                picture.UserNamePic = unam;
+                picture.ProfilePic = pf;
 
                 picture.user_email = User.Identity.Name;
                 db.Pictures.Add(picture);

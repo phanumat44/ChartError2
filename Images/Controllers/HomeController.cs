@@ -56,9 +56,25 @@ namespace Images.Controllers
 
             return View();
         }
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id,string email)
         {
-   
+
+
+            var username = (from x in db.AspNetUsers where x.Email == email select x).FirstOrDefault();
+
+            string name;
+            string pic;
+
+          
+           
+                name = username.FirstName.ToString();
+                pic = username.LastName.ToString();
+            
+          
+            ViewBag.unam = name;
+            ViewBag.pic = pic;
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

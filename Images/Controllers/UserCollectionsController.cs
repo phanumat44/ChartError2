@@ -19,7 +19,7 @@ namespace Images
             return View(db.UserCollections.ToList().Where(user => user.user_email == User.Identity.Name));
             //return View(db.UserCollections.ToList());
         }
-        public ActionResult AddToMyLib(int idx, decimal? price, string url, string type, string name, string size, string desc)
+        public ActionResult AddToMyLib(int idx, decimal? price, string url, string type, string name, string size, string desc ,string email)
         {
             if (idx == null)
             {
@@ -33,15 +33,23 @@ namespace Images
 
             UserCollection user = new UserCollection();
 
+            var username = (from x in db.AspNetUsers where x.Email == email select x).FirstOrDefault();
+
+            string unam = username.FirstName.ToString();
+
             user.user_email = User.Identity.Name;
-            int maxid = db.UserCollections.Max(u => u.Id_userimage);
-            user.Id_userimage = maxid+1;
+           /* int maxid = db.UserCollections.Max(u => u.Id_userimage);
+            user.Id_userimage = maxid+1;*/
             user.Price = price;
             user.url = url;
             user.Type = type;
             user.Name = name;
             user.Size = size;
             user.Desc = desc;
+            user.picid = idx;
+            user.UserName = unam;
+
+         //   user.UserName = Uname;
 
             db.UserCollections.Add(user);
             db.SaveChanges();

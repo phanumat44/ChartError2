@@ -257,6 +257,7 @@
     <Content Include="Content\css\all.min.css" />
     <Content Include="Content\css\brands.css" />
     <Content Include="Content\css\brands.min.css" />
+    <Content Include="Content\css\DetailCss.css" />
     <Content Include="Content\css\fontawesome.css" />
     <Content Include="Content\css\fontawesome.min.css" />
     <Content Include="Content\css\regular.css" />
@@ -448,7 +449,6 @@
     <Content Include="Views\Category\Animal.cshtml" />
     <Content Include="Views\Category\Science.cshtml" />
     <Content Include="Views\Category\Tech.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\OrderDetails\ViewOrderDetails.cshtml" />
     <Content Include="Views\Home\QRCODE.cshtml" />
     <Content Include="Views\UserCollections\Create.cshtml" />
@@ -469,6 +469,7 @@
     <Content Include="Views\Reports\Edit.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\Reports\MyReport.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

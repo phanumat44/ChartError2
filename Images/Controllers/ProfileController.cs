@@ -132,6 +132,9 @@ namespace Images.Controllers
                 //db.Entry(picture).State = EntityState.Modified;
                 //db.Entry(aspNetUser).State = EntityState.Modified;
 
+
+
+
                 res.FirstName = aspNetUser.FirstName;
                 db.SaveChanges();
                 return RedirectToAction("Index");
